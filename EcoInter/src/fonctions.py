@@ -1,8 +1,8 @@
 def possibilites():
-    choix_list = ["Calculer le taux de change réel bilatérale","Calculer le taux de change réel bilatérale inversé","Change fixe - Comment maintenir la parité de sa monnaie?","Appréciation ou dépréciation par rapport au taux d'inflation?","Choix du titre financier par rapport au taux de change entre deux pays."]
+    choix_list = ["Calculer le taux de change réel bilatérale","Calculer le taux de change réel bilatérale inversé","Change fixe - Comment maintenir la parité de sa monnaie?","Appréciation ou dépréciation par rapport au taux d'inflation?","Choix du titre financier par rapport au taux de change entre deux pays.",
+                  "Calculer le taux de change effectif en fonction de X pays.","Voir si une monnaie est sous ou sur-évaluée grâce au taux de change PPA."]
     for i in range(0,len(choix_list)):
         print(str(i+1)," - ",str(choix_list[i]))
-
 
 def tx_change_bilaterale_reel(): 
     print("\n\n----\nVous entrez dans l'option 1 !\n => Calculer le taux de change réel bilatérale\n----")
@@ -80,5 +80,38 @@ def rendement_titres():
     elif gain1 == gain2 :
         print("Tu peux prendre n'importe quel titre !")
         
+def tx_change_effectif() :
+    print("\n\n----\nVous entrez dans l'option 6 !\n => Calculer le taux de change effectif en fonction de X pays.\n----")
+    pays = int(input("Selectionez le nombre de pays pour calculer le taux de change effectif : "))
+    tx_list = []
+    tx_effectif = 0
+    for i in range(0,pays):
+        print("\n----\nPays numéro " + str(i+1) + "\n----")
+        pourcentage = float(input("Entrez le pourcentage de taux de change (si la monnaie s'apprécie = positif/ si la monnaie se déprécie = négatif) (en %) : "))
+        tx_list.append(pourcentage)
+        tx_effectif = tx_effectif + pourcentage/100
+    tx_effectif = (tx_effectif/pays)*100
+    if tx_effectif >=0 :
+        print("La monnaie s'est apprécié de " + str(tx_effectif) + " % en moyenne par rapport aux autres pays !")
+    elif tx_effectif < 0 :
+        tx_effectif = tx_effectif - (tx_effectif*2)
+        print("La monnaie s'est déprécié de " + str(tx_effectif) + " % en moyenne par rapport aux autres pays !")
     
-fonction_select = [tx_change_bilaterale_reel,tx_change_bilaterale_reel_inverse,change_fixe,tx_inflation_tx_change,rendement_titres]
+def ppa():
+    print("\n\n----\nVous entrez dans l'option 7 !\n => Voir si une monnaie est sous ou sur-évaluée grâce au taux de change PPA.\n----")
+    tx_change_cpt = float(input("Entrez le taux de change sur le marché (ex : 1$ = 6MIN (Notez 6)) : "))
+    
+    produit1 = float(input("Tapez le prix du panier dans le pays d'origine (sans devises) : "))
+    produit2 = float(input("Tapez le prix du panier dans le pays d'arrivée (sans devises) : "))
+    taux_ppa = produit2/produit1
+    print("Le taux de change PPA entre les deux monnaie est de 1 pour " + str(taux_ppa) + " !")
+    diff = taux_ppa - tx_change_cpt
+    if diff >= 0 :
+        print("La première monnaie (d'origine) est sous-évaluée tandis que la seconde monnaie (arrive) est sur-évaluée !")    
+    elif diff < 0 :
+        print("La première monnaie (d'origine) est sur-évaluée tandis que la seconde monnaie (arrive) est sous-évaluée !")    
+    
+    
+        
+    
+fonction_select = [tx_change_bilaterale_reel,tx_change_bilaterale_reel_inverse,change_fixe,tx_inflation_tx_change,rendement_titres,tx_change_effectif,ppa]
