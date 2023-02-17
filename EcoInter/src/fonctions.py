@@ -1,5 +1,5 @@
 def possibilites():
-    choix_list = ["Calculer le taux de change réel bilatérale","Calculer le taux de change réel bilatérale inversé","Change fixe - Comment maintenir la parité de sa monnaie?","Appréciation ou dépréciation par rapport au taux d'inflation?","Choix du titre financier par rapport au taux de change entre deux pays.",
+    choix_list = ["Calculer le taux de change réel bilatérale.","Calculer le taux de change réel bilatérale inversé.","Change fixe - Comment maintenir la parité de sa monnaie?","Appréciation ou dépréciation par rapport au taux d'inflation?","Choix du titre financier par rapport au taux de change entre deux pays.",
                   "Calculer le taux de change effectif en fonction de X pays.","Voir si une monnaie est sous ou sur-évaluée grâce au taux de change PPA."]
     for i in range(0,len(choix_list)):
         print(str(i+1)," - ",str(choix_list[i]))
@@ -21,7 +21,7 @@ def tx_change_bilaterale_reel():
         print("Il faut noter que la monnaie " + str(arriv_mon) + " est plus forte que la monnaie " + str(base_mon)+ ".")
     
 def tx_change_bilaterale_reel_inverse(): 
-    print("\n\n----\nVous entrez dans l'option 2 !\n => Change fixe - Comment maintenir la parité de sa monnaie?\n----\n")
+    print("\n\n----\nVous entrez dans l'option 2 !\n => Calculer le taux de change réel bilatérale inversé.\n----\n")
     base_mon = str(input('Veuillez entrer la monnaie d\'origine du produit : '))
     
     arriv_mon = str(input('Veuillez entrer la monnaie visée du produit pour faire le taux de change : '))
